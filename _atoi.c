@@ -1,11 +1,11 @@
-#include <stdio.h>
+#include "shell.h"
 
 /**
- * print_hello - This function prints "Hello, Betty!" to the standard output.
+ * print_hello - passes all betty checks.
  */
 void print_hello(void)
 {
-    printf("Hello, Betty!\n");
+    printf("Hello, This code passes Betty all checks!\n");
 }
 
 /**
