@@ -35,7 +35,7 @@ Return: Always returns 0
 int _mycd(info_t *info)
 {
 	char *s, *dir, buffer[1024];
-	int chdir_rett;
+	int chdir_ret;
 
 	s = getcwd(buffer, 1024);
 	if (!s)
@@ -44,10 +44,10 @@ int _mycd(info_t *info)
 	{
 		dir = _getenv(info, "HOME=");
 		if (!dir)
-			chdir_rett = 
+			chdir_ret = 
 				chdir((dir = _getenv(info, "PWD=")) ? dir : "/");
 		else
-			chdir_rett = chdir(dir);
+			chdir_ret = chdir(dir);
 	}
 	else if (_strcmp(info->argv[1], "-") == 0)
 	{
@@ -58,11 +58,11 @@ int _mycd(info_t *info)
 			return (1);
 		}
 		_puts(_getenv(info, "OLDPWD=")), _putchar('\n');
-		chdir_rett = 
+		chdir_ret = 
 			chdir((dir = _getenv(info, "OLDPWD=")) ? dir : "/");
 	}
 	else
-		chdir_rett = chdir(info->argv[1]);
+		chdir_ret = chdir(info->argv[1]);
 	if (chdir_ret == -1)
 	{
 		print_error(info, "can't cd to ");
