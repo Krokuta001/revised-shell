@@ -1,67 +1,67 @@
 #include "shell.h"
 
 /**
- * copyString - copies a string
- * @dest: the destination string to be copied to
- * @src: the source string
- * @n: the number of characters to be copied
- * Return: the concatenated string
+ **_strncpy - copy a string
+ *@dest:  destination string to be copied to
+ *@src:  source string
+ *@n: the number of characters to be copied
+ *Return: the concatenated string
  */
 char *_strncpy(char *dest, char *src, int n)
 {
-	int k, h;
-	char *f = dest;
+	int i, j;
+	char *s = dest;
 
-	k = 0;
-	while (src[k] != '\0' && k < n - 1)
+	i = 0;
+	while (src[i] != '\0' && i < n - 1)
 	{
-		dest[k] = src[h];
-		k++;
+		dest[i] = src[i];
+		i++;
 	}
-	if (k < n)
+	if (i < n)
 	{
-		h = k;
-		while (h < n)
+		j = i;
+		while (j < n)
 		{
-			dest[h] = '\0';
-			h++;
+			dest[j] = '\0';
+			j++;
 		}
 	}
-	return (f);
+	return (s);
 }
 
 /**
- * concatenateStrings - concatenates two strings
- * @dest: the first string
- * @src: the second string
- * @n: the maximum number of bytes to be used
- * Return: the concatenated string
+ **_strncat - concatenates two strings
+ *@dest: the first string
+ *@src: the second string
+ *@n: the amount of bytes to be maximally used
+ *Return: the concatenated string
  */
 char *_strncat(char *dest, char *src, int n)
 {
-	int k, h;
-	char *f = dest;
+	int i, j;
+	char *s = dest;
 
-	k = 0;
-	h = 0;
-	while (dest[k] != '\0')
-		k++;
-	while (src[h] != '\0' && h < n)
+	i = 0;
+	j = 0;
+	while (dest[i] != '\0')
+		i++;
+	while (src[j] != '\0' && j < n)
 	{
-		dest[k] = src[h];
-		k++;
-		h++;
+		dest[i] = src[j];
+		i++;
+		j++;
 	}
-	if (h < n)
-		dest[k] = '\0';
-	return (f);
+	if (j < n)
+		dest[i] = '\0';
+	return (s);
 }
 
 /**
- * locateCharacter - locates a character in a string
- * @s: the string to be searched
- * @c: the character to look for
- * Return: (s) a pointer to the memory area s
+ **_strchr - locates a character in a string
+ *@s: the string to be parsed
+ *@c: the character to look for
+ *Return: (s) a pointer to the memory area s
  */
 char *_strchr(char *s, char c)
 {

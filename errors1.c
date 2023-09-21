@@ -1,24 +1,24 @@
 #include "shell.h"
 
 /**
-convertStringToInteger - converts a string to an integer
-@s: the string to be converted
-Returns: 0 if no numbers are found in the string, the converted number otherwise,
-     -1 on error
-*/
-int _erratoi(char *z)
+ * _erratoi - converts a string to an integer
+ * @s:  string to be converted
+ * Return: 0 if no numbers in string, converted number otherwise
+ *       -1 on error
+ */
+int _erratoi(char *s)
 {
 	int j = 0;
 	unsigned long int result = 0;
 
-	if (*z == '+')
-		z++;
-	for (j = 0;  z[j] != '\0'; j++)
+	if (*s == '+')
+		s++;  /* TODO: why does this make main return 255? */
+	for (j = 0;  s[j] != '\0'; j++)
 	{
-		if (z[j] >= '0' && z[j] <= '9')
+		if (s[j] >= '0' && s[j] <= '9')
 		{
 			result *= 10;
-			result += (z[j] - '0');
+			result += (s[j] - '0');
 			if (result > INT_MAX)
 				return (-1);
 		}
@@ -29,10 +29,11 @@ int _erratoi(char *z)
 }
 
 /**
- * printError - prints an error message
- * @info: the parameter and return information structure
- * @estr: string containing the specified error typ
- * Return: 0 if no errors occurred, -1 on error
+ * print_error - prints an  error message
+ * @info:  parameter && return info structure
+ * @estr: string containing specific error type
+ * Return: 0 if no number in string, converted number otherwise
+ *        -1 on error
  */
 void print_error(info_t *info, char *estr)
 {
@@ -46,10 +47,11 @@ void print_error(info_t *info, char *estr)
 }
 
 /**
- * printDecimal - prints a decimal (integer) number (base 10)
- * @input: the input number
- * @fd: the file descriptor to write to
- * Return: the number of characters printed
+ * print_d - function prints a decimal (integer) number in (base 10)
+ * @input: the_ input
+ * @fd: the filedescriptor to write to
+ *
+ * Return: number of characters printed
  */
 int print_d(int input, int fd)
 {
@@ -83,12 +85,13 @@ int print_d(int input, int fd)
 	return (count);
 }
 
-/*
- * convertNumber - converter function, similar to itoa
- * @num: the number to convert
- * @base: the base for conversion
+/**
+ * convert_number - converters function, a clone of itoa
+ * @num: number
+ * @base: base
  * @flags: argument flags
- * Return: the converted string
+ *
+ * Return: string
  */
 char *convert_number(long int num, int base, int flags)
 {
@@ -119,18 +122,19 @@ char *convert_number(long int num, int base, int flags)
 }
 
 /**
- * removeComments - function replaces the first instance of '#' with '\0'
+ * remove_comments - function replaces first instance of '#' with '\0'
  * @buf: address of the string to modify
- * Return: Always returns 0;
+ *
+ * Return: Always 0;
  */
 void remove_comments(char *buf)
 {
 	int j;
 
 	for (j = 0; buf[j] != '\0'; j++)
-		if (buf[j] == '#' && (!j || buf[j - 1] == ' '))
+		if (buf[j] == '#' && j!i || buf[j - 1] == ' '))
 		{
-			buf[j] = '\0';
+			buf[i] = '\0';
 			break;
 		}
 }
