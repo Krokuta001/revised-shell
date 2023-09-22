@@ -2,23 +2,23 @@
 
 /**
  * _erratoi - converts a string to an integer
- * @s:  string to be converted
+ * @s: the string to be converted
  * Return: 0 if no numbers in string, converted number otherwise
  *       -1 on error
  */
 int _erratoi(char *s)
 {
-	int j = 0;
+	int i = 0;
 	unsigned long int result = 0;
 
 	if (*s == '+')
 		s++;  /* TODO: why does this make main return 255? */
-	for (j = 0;  s[j] != '\0'; j++)
+	for (i = 0;  s[i] != '\0'; i++)
 	{
-		if (s[j] >= '0' && s[j] <= '9')
+		if (s[i] >= '0' && s[i] <= '9')
 		{
 			result *= 10;
-			result += (s[j] - '0');
+			result += (s[i] - '0');
 			if (result > INT_MAX)
 				return (-1);
 		}
@@ -29,10 +29,10 @@ int _erratoi(char *s)
 }
 
 /**
- * print_error - prints an  error message
- * @info:  parameter && return info structure
- * @estr: string containing specific error type
- * Return: 0 if no number in string, converted number otherwise
+ * print_error - prints an error message
+ * @info: the parameter & return info struct
+ * @estr: string containing specified error type
+ * Return: 0 if no numbers in string, converted number otherwise
  *        -1 on error
  */
 void print_error(info_t *info, char *estr)
@@ -47,8 +47,8 @@ void print_error(info_t *info, char *estr)
 }
 
 /**
- * print_d - function prints a decimal (integer) number in (base 10)
- * @input: the_ input
+ * print_d - function prints a decimal (integer) number (base 10)
+ * @input: the input
  * @fd: the filedescriptor to write to
  *
  * Return: number of characters printed
@@ -56,7 +56,7 @@ void print_error(info_t *info, char *estr)
 int print_d(int input, int fd)
 {
 	int (*__putchar)(char) = _putchar;
-	int j, count = 0;
+	int i, count = 0;
 	unsigned int _abs_, current;
 
 	if (fd == STDERR_FILENO)
@@ -70,14 +70,14 @@ int print_d(int input, int fd)
 	else
 		_abs_ = input;
 	current = _abs_;
-	for (j = 1000000000; j > 1; j /= 10)
+	for (i = 1000000000; i > 1; i /= 10)
 	{
-		if (_abs_ / j)
+		if (_abs_ / i)
 		{
-			__putchar('0' + current / j);
+			__putchar('0' + current / i);
 			count++;
 		}
-		current %= j;
+		current %= i;
 	}
 	__putchar('0' + current);
 	count++;
@@ -86,7 +86,7 @@ int print_d(int input, int fd)
 }
 
 /**
- * convert_number - converters function, a clone of itoa
+ * convert_number - converter function, a clone of itoa
  * @num: number
  * @base: base
  * @flags: argument flags
@@ -129,10 +129,10 @@ char *convert_number(long int num, int base, int flags)
  */
 void remove_comments(char *buf)
 {
-	int j;
+	int i;
 
-	for (j = 0; buf[j] != '\0'; j++)
-		if (buf[j] == '#' && j!i || buf[j - 1] == ' '))
+	for (i = 0; buf[i] != '\0'; i++)
+		if (buf[i] == '#' && (!i || buf[i - 1] == ' '))
 		{
 			buf[i] = '\0';
 			break;

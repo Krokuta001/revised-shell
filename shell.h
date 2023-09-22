@@ -1,7 +1,7 @@
 #ifndef _SHELL_H_
 #define _SHELL_H_
 
-#include <errno.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
@@ -10,7 +10,7 @@
 #include <sys/stat.h>
 #include <limits.h>
 #include <fcntl.h>
-#include <stdio.h>
+#include <errno.h>
 
 /* for read/write buffers */
 #define READ_BUF_SIZE 1024
@@ -35,7 +35,6 @@
 #define HIST_MAX	4096
 
 extern char **environ;
-
 
 /**
  * struct liststr - singly linked list
@@ -97,7 +96,7 @@ typedef struct passinfo
 
 #define INFO_INIT \
 {NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
-		0, 0, 0}
+	0, 0, 0}
 
 /**
  * struct builtin - contains a builtin string and related function
@@ -109,7 +108,6 @@ typedef struct builtin
 	char *type;
 	int (*func)(info_t *);
 } builtin_table;
-
 
 /* toem_shloop.c */
 int hsh(info_t *, char **);
